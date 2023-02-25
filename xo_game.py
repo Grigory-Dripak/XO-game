@@ -4,16 +4,16 @@ def show_chess(field):
     for i in range(3):
         print(f"{i} {'  '.join(field[i])}")
 
-def finish_game(row, col, xy):
+def finish_game(row, col, player):
     #проверяем условия окончания игры
     a = set(xo_field[row])
     b = set([xo_field[i][col] for i in range(3)])
     c = set([xo_field[i][j] for i, j in zip(range(3), range(3))])
     d = set([xo_field[i][j] for i, j in zip(range(2, -1, -1), range(3))])
     win_check = [a, b, c, d]
-    if {xy} in win_check:
+    if {player} in win_check:
         show_chess(xo_field)
-        print(f'Игра завершена - победу одержал {xy}')
+        print(f'Игра завершена - победу одержал {player}')
         return True
     else: #если никто еще не выиграл, проверить вариант ничьи по наличию незаполненных значений
         count = 0
